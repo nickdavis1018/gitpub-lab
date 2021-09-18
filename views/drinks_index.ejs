@@ -11,7 +11,7 @@
     <ul>
     <% for(let i = 0; i < allDrinks.length; i++){ %>
             <li>
-                <a href="/drinks/<%= i %>">
+                <a href="/drinks/<%= i %>"
 
                     <!-- Capitalizing the first letter of the string was easy, but capitalizing the first letter of each word of the string, leaving some room for exceptions, was more difficult. Got some help at https://www.freecodecamp.org/news/how-to-capitalize-words-in-javascript/ -->
                     <% const fullDrink = allDrinks[i].name;
