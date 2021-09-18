@@ -3,6 +3,10 @@ const app = express();
 const port = 3000;
 const drinks = require('./models/drinks.js')
 
+for (let i=0; i < drinks.length; i++){
+    drinks[i].image = drinks[i].image.slice(0, -3) + "png"
+}
+
 app.get('/', (req, res) => {
     res.send('Welcome to the Gitpub App!');
 });
