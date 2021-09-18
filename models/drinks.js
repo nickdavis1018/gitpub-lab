@@ -40,3 +40,6 @@ const drinks = [
       image: 'https://i.imgur.com/MbVdwZz.jpg'
     }
   ]
+
+  module.exports = drinks
+  
