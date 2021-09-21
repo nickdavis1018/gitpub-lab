@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitPub Home</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <h1>GitPub Menu</h1>
+    <h2>Welcome to GitPub!</h2><div id="top-div"><div id="style-box-master">
+  <div id="style-box-drinks"><ul><h3><u>Drinks</u></h3>
+    <% for(let i = 0; i < allDrinks.length; i++){ %>
+            <li>
+                <a href="/drinks/<%= i %>">
+                    <% const fullDrink = allDrinks[i].name;
+                    const brokenDrink = fullDrink.split(" ");
+                    for (let x = 0; x < brokenDrink.length; x++) {
+                    if(brokenDrink[x] === "on" || brokenDrink[x] === "the" || brokenDrink[x] === "if" || brokenDrink[x] === "to" || brokenDrink[x] === "stateMint"|| brokenDrink[x] === "julep"){
+                        brokenDrink[x] = brokenDrink[x][0]+ brokenDrink[x].substr(1);
+                    }
+                    else{
+                        brokenDrink[x] = brokenDrink[x][0].toUpperCase() + brokenDrink[x].substr(1);}
+                    }
+                    const revisedDrink = brokenDrink.join(" ");%>
+                    <%= revisedDrink %>
+                </a>
+            </li>
+        <% } %>
+    </ul></div>
+  <div id="style-box-foods"><ul><h3><u>Food</u></h3>
+    <% for(let i = 0; i < allFoods.length; i++){ %>
+            <li class="foods">
+                <a href="/foods/<%= i %>">
+                    <%= allFoods[i].name%>
+                </a>
+            </li>
+        <% } %>
+    </ul><br></div></div>
+    <br>
+    <div id="links"><a href="http://localhost:3000/drinks"><i>Go to Drinks Menu</i></a><a href="http://localhost:3000/foods"><i>Go to Food Menu</i></a></div><br><br>
+</div><br><input type="button" id="lucky" value="I am feeling lucky..."><div id="blank"></div>
+  <% let randomFoodNumber = Math.floor(Math.random() * allFoods.length); let randomDrinkNumber = Math.floor(Math.random() * allDrinks.length) %>
+  <div id="random-div">
+    <div id="random-drink">
+        <p>Drink: <i><%= allDrinks[randomDrinkNumber].name %></i></p>
+        <img src="<%=allDrinks[randomDrinkNumber].image%>" id="random-drink-img">
+        <p>Price: $<%= allDrinks[randomDrinkNumber].price %></p>
+    </div>
+  <div id="random-food">
+    <p>Meal: <i><%= allFoods[randomFoodNumber].name %></i></p>
+    <img src="<%=allFoods[randomFoodNumber].image%>" id="random-food-img">
+    <p>Price: $<%= allFoods[randomFoodNumber].price %></p></div>
+</div>
+</body>
+<style>
+
+  body {
+    color: blanchedalmond;
+    background-color: steelblue;
+    text-align: center;
+  }
+
+  #top-div{
+      background-color: gray;
+      border: solid black 1px;
+      border-radius: 20px;
+  }
+
+  #style-box-master{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      text-align: center;
+  }
+
+  #random-div{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    display: none;
+  }
+
+  li{
+      font-weight: bold;
+      padding: 10px 0px 0px 0px;
+      list-style-type: none;
+      text-align: left;
+  }
+
+  h3{
+    text-align: right;
+    position: relative;
+    right: 20px;
+    top: 10px;
+  }
+
+  #random-food{
+    text-align: left;
+  }
+
+  #random-drink{
+      text-align: left;
+  }
+
+  #random-drink-img{
+    width: 250px;
+    height: 250px;
+    border: solid black 5px;
+  }
+
+  #random-food-img{
+    width: 250px;
+    height: 250px;
+    border: solid black 5px;
+    }
+
+    h3{
+        text-align: center;
+    }
+
+    #links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+@media screen and (max-width: 600px) {
+    #random-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  #random-food{
+    text-align: center;
+  }
+
+  #random-drink{
+      text-align: center;
+      border-bottom: solid black 1px;
+    }
+
+  #random-drink-img{
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    text-align: center;
+  }
+
+  #random-food-img{
+    width: 150px;
+    height: 150px;
+    border: solid black 5px;
+    text-align: center;
+    }
+}
+
+</style>
+<script r>
+const $button = $("#lucky")
+const $randomMeal = $("#random-div")
+const $blank = $("#blank")
+
+function random(){
+$randomMeal.css("display", "block")
+$randomMeal.css("display", "flex")
+$button.css("display", "none")
+$blank.append("<p>Hope you like your GitPub Random Meal! If you don't like it, try refreshing the page and trying again, or browse individual menu items above!</p>")
+}
+$button.on("click", random)
+
+
+</script>
+</html>

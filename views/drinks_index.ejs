@@ -7,11 +7,10 @@
     <title>Drinks Index</title>
 </head>
 <body>
-    <h1>Welcome to GitPub!</h1>
-    <ul>
+    <ul><h1><u>Drinks Menu</u></h1>
     <% for(let i = 0; i < allDrinks.length; i++){ %>
             <li>
-                <a href="/drinks/<%= i %>"
+                <a href="/drinks/<%= i %>">
 
                     <!-- Capitalizing the first letter of the string was easy, but capitalizing the first letter of each word of the string, leaving some room for exceptions, was more difficult. Got some help at https://www.freecodecamp.org/news/how-to-capitalize-words-in-javascript/ -->
                     <% const fullDrink = allDrinks[i].name;
@@ -30,12 +29,29 @@
             </li>
 
         <% } %>
+    <br><br>
+    <a href="http://localhost:3000/foods"><i>Go to Foods Menu</i></a><br><br>
+    <a href="http://localhost:3000/"><i>Go to Main Menu</i></a><br><br>
     </ul>
 </body>
 <style>
   body {
     color: blanchedalmond;
     background-color: steelblue;
+    text-align: center;
   }
+
+  li{
+      list-style-type: none;
+      padding: 10px 0px 0px 0px;
+      font-weight: bold;
+  }
+
+  ul{
+      background-color: gray;
+      border: solid black 1px;
+      border-radius: 20px;
+  }
+
 </style>
 </html>
